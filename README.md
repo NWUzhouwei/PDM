@@ -1,5 +1,3 @@
-<div align="center">
-
 ## Point Diffusion Mamba (PDM) for Single-View Point Cloud Reconstruction
 
 
