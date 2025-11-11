@@ -8,7 +8,7 @@ def get_args():
     parser.add_argument(
         '--config', 
         type = str, 
-        default='/home/sxz/下载/Mamba3D-main/cfgs/finetune_scan_hardest.yaml',
+        default='/home/pdm/download/Mamba3D-main/cfgs/finetune_scan_hardest.yaml',
         help = 'yaml config file')
     parser.add_argument(
         '--launcher',
@@ -93,7 +93,7 @@ def get_args():
         help = 'tsne')
     parser.add_argument('--test_model', type = str, default='point_mae', help = 'tsne model name')
     
-    parser.add_argument('--tsne_fig_path', type = str, default='/home/sxz/下载/Mamba3D-main/tsne_pointmae_hardest_pt.pdf', help = 'tsne_fig_path name')
+    parser.add_argument('--tsne_fig_path', type = str, default='/home/pdm/download/Mamba3D-main/tsne_pointmae_hardest_pt.pdf', help = 'tsne_fig_path name')
     
     args = parser.parse_args()
 
@@ -144,10 +144,10 @@ def create_experiment_dir(args):
 
 def copy_file_to_log(args, name):
     if not os.path.exists(os.path.join(args.experiment_path, name)):
-        shutil.copyfile(os.path.join('/home/sxz/下载/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d', name), os.path.join(args.experiment_path, name))
+        shutil.copyfile(os.path.join('/home/pdm/download/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d', name), os.path.join(args.experiment_path, name))
         print(f"Save {name} to {args.experiment_path}!")
     else:
         os.remove(os.path.join(args.experiment_path, name)) # delete existing file first
         print("Delete done!" if not os.path.exists(os.path.join(args.experiment_path, name)) else "Already existing!") 
-        shutil.copyfile(os.path.join('/home/sxz/下载/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d', name), os.path.join(args.experiment_path, name))
+        shutil.copyfile(os.path.join('/home/pdm/download/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d', name), os.path.join(args.experiment_path, name))
         print(f"Overwrite {name} to {args.experiment_path}!")
