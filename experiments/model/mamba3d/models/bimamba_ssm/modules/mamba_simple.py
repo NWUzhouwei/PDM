@@ -17,7 +17,7 @@ except ImportError:
     causal_conv1d_fn, causal_conv1d_update = None
     
 import sys
-sys.path.append(r"/home/sxz/下载/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d/models/bimamba_ssm")
+sys.path.append(r"/home/pdm/download/projection-conditioned-point-cloud-diffusion-main/experiments/model/mamba3d/models/bimamba_ssm")
 from ops.selective_scan_interface import selective_scan_fn, mamba_inner_fn, bimamba_inner_fn, mamba_inner_fn_no_out_proj
 # except ImportError:
 #     selective_scan_fn, mamba_inner_fn, bimamba_inner_fn, mamba_inner_fn_no_out_proj = None, None, None, None
