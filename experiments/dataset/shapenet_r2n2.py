@@ -112,8 +112,8 @@ class ShapeNet_R2N2(Dataset):
 
     def __init__(
         self,
-        root_dir="/media/sxz/软件/data/ShapeNetV1PointCloud",
-        r2n2_dir="/media/sxz/软件/shapenet/ShapeNetV1Renderings",
+        root_dir="/media/pdm/software/data/ShapeNetV1PointCloud",
+        r2n2_dir="/media/pdm/software/shapenet/ShapeNetV1Renderings",
         pc_dict="pc_dict_v2.json",
         split_file="R2N2_split.json",
         views_rel_path="ShapeNetV1Renderings",
