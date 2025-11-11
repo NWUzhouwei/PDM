@@ -144,8 +144,8 @@ class PointCloudDatasetConfig(DatasetConfig):
 @dataclass
 class ShapeNetR2N2Config(PointCloudDatasetConfig):
     type: str = 'shapenet_r2n2'
-    root: str = '/media/sxz/软件/datasets/ShpaeNet/ShapeNetCore.v2.PC15k'
-    r2n2_dir: str = '/media/sxz/软件/shapenet'
+    root: str = '/media/pdm/software/datasets/ShpaeNet/ShapeNetCore.v2.PC15k'
+    r2n2_dir: str = '/media/pdm/software/shapenet'
     pc_dict: str = 'pc_dict_v2.json'
     split_file: str = 'R2N2_split.json'
     views_rel_path: str = 'ShapeNetV1Renderings'
@@ -158,7 +158,7 @@ class ShapeNetR2N2Config(PointCloudDatasetConfig):
 @dataclass
 class Pix3DConfig(PointCloudDatasetConfig):
     type: str = 'pix3d'
-    root: str = '/home/sxz/下载/Pix3d/pix3d'
+    root: str = '/home/pdm/download/Pix3d/pix3d'
     pc_dict: str = 'pix3d.json'
     category: str = 'chair'
     mask_images: bool = '${model.use_mask}'
