@@ -20,7 +20,7 @@ class Pix3D(Dataset):
     """
     def __init__(
         self,
-        root_dir="/home/sxz/下载/pix3d",
+        root_dir="/home/pdm/download/pix3d",
         split="train",
         sample_size=4096,
         img_size=224,
