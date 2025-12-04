@@ -17,7 +17,7 @@ export roll_step=16
 # milestones for interaction
 export milestones="[1000,968,936,872,128,64,32,0]"
 
-python main_ge.py \
+python main_blending.py \
     logging.wandb_project=${wandb_name} \
     run.job=sample_bdm_blending \
     run.save_dir=${save_dir} \
