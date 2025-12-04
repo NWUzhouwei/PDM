@@ -1,4 +1,3 @@
-
 export wandb_name="pdm"
 export save_dir="./outputs"
 
