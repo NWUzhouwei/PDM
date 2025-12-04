@@ -145,14 +145,6 @@ def main(cfg: ProjectConfig):
         generator = None
 
     print("Building prior model...")
-    # ge_path = cfg.aux_run.prior_ckpt
-    # opt = {
-    #     "model": ge_path,
-    #     "nc": 3,
-    #     "embed_dim": 64,
-    #     "attention": True,
-    #     "dropout": 0.1,
-    # }
     prior_model = prepare_prior_model(cfg)
     print("Built prior model!")
 
@@ -316,12 +308,6 @@ def bdm_blending(
                 )
             )
             pred_pc_prior = pred_pc.clone()
-            # pred_out_prior = prior(
-            #     prior_model,
-            #     pred_pc_prior,
-            #     start_time=prior_milestones[i + 1],
-            #     end_time=prior_milestones[i + 1] - prior_roll_step,
-            # )  # (B, N, 3)
             pred_out_prior = prior_model.interaction_sample(
                 pred_pc_prior,
                 camera,
@@ -343,33 +329,11 @@ def bdm_blending(
             diff = x_g - x_r
             dist_sq = torch.sum(diff**2, dim=-1, keepdim=True)
 
-            delta = cfg.fusion.fusion_delta
+            delta = 1.0
 
             weights = 1.0 / (1.0 + torch.exp(-delta * dist_sq))
 
             pred_pc = weights * x_g + (1.0 - weights) * x_r
-
-            # # random choose which point cloud to go
-            # print("Random choose branch to go")
-            # pred_out = torch.cat(
-            #     [pred_out_recon, pred_out_prior], dim=1
-            # )  # (B, 2, N, 3)
-            # pred_out = pred_out.permute(0, 2, 1, 3)  # (B, N, 2, 3)
-            # indices = torch.randint(
-            #     0,
-            #     2,
-            #     (
-            #         pred_out.shape[0],
-            #         pred_out.shape[1],
-            #     ),
-            #     generator=generator,
-            # ).long()  # (B, N)
-            # pred_pc = pred_out[
-            #     torch.arange(pred_out.shape[0]).unsqueeze(1),
-            #     torch.arange(pred_out.shape[1]).unsqueeze(0),
-            #     indices,
-            #     :,
-            # ]  # (B, N, 3)
 
     output = Pointclouds(pred_pc)
     return output
